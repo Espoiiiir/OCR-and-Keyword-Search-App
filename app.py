@@ -29,7 +29,7 @@ def main():
 
     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert("RGB")
-        extracted_text = perform_ocr(image).strip()
+        extracted_text = ocr_image(image).strip()
 
         st.write("Extracted Text:")
         st.write(extracted_text)
