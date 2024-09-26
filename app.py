@@ -3,7 +3,7 @@ from PIL import Image, ImageEnhance, ImageFilter
 import pytesseract
 import streamlit as st
 from transformers import TrOCRProcessor, VisionEncoderDecoderModel
-
+import torch
 # Set the Tesseract command path based on the environment
 pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 # Load the Huggingface model and processor
