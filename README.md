@@ -1,6 +1,4 @@
 # OCR-and-Keyword-Search-App
-# OCR and Keyword Search App
-
 This is a Streamlit application that performs Optical Character Recognition (OCR) on uploaded images and allows users to search for keywords within the extracted text.
 
 ## Features
@@ -11,25 +9,18 @@ This is a Streamlit application that performs Optical Character Recognition (OCR
 - Highlight found keywords
 
 ## Installation
-
-1. **Clone the repository**:
-    ```sh
-    git clone https://github.com/yourusername/your-repo-name.git
-    cd your-repo-name
-    ```
-
-2. **Create a virtual environment** (optional but recommended):
+1. **Create a virtual environment** (optional but recommended):
     ```sh
     python -m venv venv
     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
     ```
 
-3. **Install the dependencies**:
+2. **Install the dependencies**:
     ```sh
     pip install -r requirements.txt
     ```
 
-4. **Ensure Tesseract is installed**:
+3. **Ensure Tesseract is installed**:
     - Download and install Tesseract from [here](https://github.com/tesseract-ocr/tesseract).
     - Ensure the `tesseract.exe` path is correctly set in the code.
 
