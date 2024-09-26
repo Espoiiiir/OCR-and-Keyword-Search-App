@@ -16,18 +16,11 @@ def preprocess_image(image):
     image = image.filter(ImageFilter.MedianFilter())
     return image
 
-def perform_ocr(image):
-    try:
-        # Preprocess the image
-        image = preprocess_image(image)
-        # Perform OCR using Tesseract with specific configurations
-        custom_config = r'--oem 3 --psm 6'
-        # Perform OCR using Tesseract with LSTM OCR Engine Mode
-        extracted_text = pytesseract.image_to_string(image, lang='eng+hin')
-        return extracted_text
-    except pytesseract.TesseractError as e:
-        st.error(f"Tesseract OCR error: {e}")
-        return ""
+
+def ocr_image(image_path):
+    img = Image.open(image_path)  
+    text = pytesseract.image_to_string(img, lang='eng+hin')  
+    return text
 
 def main():
     st.title("OCR and Keyword Search App")
