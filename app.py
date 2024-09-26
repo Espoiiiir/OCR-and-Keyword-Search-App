@@ -20,6 +20,8 @@ def perform_ocr(image):
     try:
         # Preprocess the image
         image = preprocess_image(image)
+        # Perform OCR using Tesseract with specific configurations
+        custom_config = r'--oem 3 --psm 6'
         # Perform OCR using Tesseract with LSTM OCR Engine Mode
         extracted_text = pytesseract.image_to_string(image, lang='eng+hin')
         return extracted_text
