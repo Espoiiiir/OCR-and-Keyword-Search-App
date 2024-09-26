@@ -1,4 +1,4 @@
 Pillow
 pytesseract
 streamlit
-numpy
+transformers
