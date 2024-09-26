@@ -7,7 +7,7 @@ This is a Streamlit application that performs Optical Character Recognition (OCR
 - Perform OCR to extract text from the image
 - Search for keywords within the extracted text
 - Highlight found keywords
-
+  
 ## Installation
 1. **Create a virtual environment** (optional but recommended):
     ```sh
