@@ -9,7 +9,7 @@ pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 # Load the Huggingface model and processor
 processor = AutoProcessor.from_pretrained("microsoft/trocr-base-handwritten", trust_remote_code=True)
 model = AutoModelForVision2Seq.from_pretrained("microsoft/trocr-base-handwritten", trust_remote_code=True)
-
+@st.cache
 def preprocess_image(image):
     # Convert image to grayscale
     image = image.convert('L')
