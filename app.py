@@ -7,7 +7,6 @@ import torch
 # Set the Tesseract command path based on the environment
 pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 
-@st.cache_data
 def preprocess_image(image):
     # Convert image to grayscale
     image = image.convert('L')
@@ -18,7 +17,6 @@ def preprocess_image(image):
     image = image.filter(ImageFilter.MedianFilter())
     return image
 
-@st.cache_data
 def perform_ocr(image):
     try:
         # Preprocess the image
@@ -36,8 +34,8 @@ def load_model():
     model = AutoModelForVision2Seq.from_pretrained("microsoft/trocr-base-handwritten", trust_remote_code=True)
     return processor, model
 
-processor, model = load_model()
-@st.cache_data
+
+
 def perform_trocr_ocr(image):
     try:
         # Convert image to text using the TrOCR model
@@ -48,7 +46,7 @@ def perform_trocr_ocr(image):
     except Exception as e:
         st.error(f"TrOCR error: {e}")
         return ""
-@st.cache_data
+
 def main():
     st.title("OCR and Keyword Search App")
 
@@ -81,7 +79,7 @@ def main():
                 st.write(highlighted_text)
             else:
                 st.write(f"Keyword '{keyword}' not found in TrOCR output")
-
+processor, model = load_model()
 if __name__ == "__main__":
     main()
 
