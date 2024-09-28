@@ -9,7 +9,7 @@ pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 # Load the Huggingface model and processor
 processor = AutoProcessor.from_pretrained("microsoft/trocr-base-handwritten", trust_remote_code=True)
 model = AutoModelForVision2Seq.from_pretrained("microsoft/trocr-base-handwritten", trust_remote_code=True)
-@st.cache
+
 def preprocess_image(image):
     # Convert image to grayscale
     image = image.convert('L')
@@ -19,7 +19,7 @@ def preprocess_image(image):
     # Apply a filter to remove noise
     image = image.filter(ImageFilter.MedianFilter())
     return image
-@st.cache
+
 def perform_ocr(image):
     try:
         # Preprocess the image
@@ -30,7 +30,7 @@ def perform_ocr(image):
     except pytesseract.TesseractError as e:
         st.error(f"Tesseract OCR error: {e}")
         return ""
-@st.cache
+
 def perform_trocr_ocr(image):
     try:
         # Convert image to text using the TrOCR model
@@ -41,7 +41,7 @@ def perform_trocr_ocr(image):
     except Exception as e:
         st.error(f"TrOCR error: {e}")
         return ""
-@st.cache
+
 def main():
     st.title("OCR and Keyword Search App")
 
