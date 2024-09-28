@@ -1,7 +1,7 @@
 import os
 from PIL import Image, ImageEnhance, ImageFilter
 import streamlit as st
-from pytesseract import ocr_image  # Importing ocr_image from the ocr module
+from pytesseract import image_to_string
 
 def preprocess_image(image):
     # Convert image to grayscale
@@ -20,7 +20,7 @@ def main():
 
     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert("RGB")
-        extracted_text = ocr_image(uploaded_file).strip()  # Using ocr_image function
+        extracted_text = pytesseract.image_to_string(uploaded_file).strip()  # Using ocr_image function
 
         st.write("Extracted Text (OCR):")
         st.write(extracted_text)
