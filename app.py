@@ -2,8 +2,7 @@ import os
 from PIL import Image, ImageEnhance, ImageFilter
 import pytesseract
 import streamlit as st
-from transformers import TrOCRProcessor, VisionEncoderDecoderModel, AutoProcessor, AutoModelForVision2Seq
-import torch
+
 # Set the Tesseract command path based on the environment
 pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 
@@ -26,25 +25,6 @@ def perform_ocr(image):
         return extracted_text
     except pytesseract.TesseractError as e:
         st.error(f"Tesseract OCR error: {e}")
-        return ""
-@st.cache_resource
-def load_model():
-    # Load the Huggingface model and processor
-    processor = AutoProcessor.from_pretrained("microsoft/trocr-base-handwritten", trust_remote_code=True)
-    model = AutoModelForVision2Seq.from_pretrained("microsoft/trocr-base-handwritten", trust_remote_code=True)
-    return processor, model
-
-
-
-def perform_trocr_ocr(image):
-    try:
-        # Convert image to text using the TrOCR model
-        pixel_values = processor(images=image, return_tensors="pt").pixel_values
-        generated_ids = model.generate(pixel_values)
-        extracted_text = processor.batch_decode(generated_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
-        return extracted_text
-    except Exception as e:
-        st.error(f"TrOCR error: {e}")
         return ""
 
 def main():
@@ -79,7 +59,7 @@ def main():
                 st.write(highlighted_text)
             else:
                 st.write(f"Keyword '{keyword}' not found in TrOCR output")
-processor, model = load_model()
+
 if __name__ == "__main__":
     main()
 
