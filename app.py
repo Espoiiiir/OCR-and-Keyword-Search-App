@@ -1,7 +1,7 @@
 import os
 from PIL import Image, ImageEnhance, ImageFilter
 import streamlit as st
-from ocr import ocr_image  # Importing ocr_image from the ocr module
+from pytesseract import ocr_image  # Importing ocr_image from the ocr module
 
 def preprocess_image(image):
     # Convert image to grayscale
