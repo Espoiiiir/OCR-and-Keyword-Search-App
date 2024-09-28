@@ -1,3 +1,6 @@
+Here is the adjusted code with undefined variables removed:
+
+```python
 import os
 from PIL import Image, ImageEnhance, ImageFilter
 import pytesseract
@@ -35,13 +38,9 @@ def main():
     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert("RGB")
         extracted_text = perform_ocr(image).strip()
-      
 
         st.write("Extracted Text (Tesseract):")
         st.write(extracted_text)
-
-        st.write("Extracted Text (TrOCR):")
-        st.write(trocr_extracted_text)
 
         keyword = st.text_input("Enter keyword to search").strip()
 
@@ -53,14 +52,7 @@ def main():
             else:
                 st.write(f"Keyword '{keyword}' not found in Tesseract output")
 
-            if keyword in trocr_extracted_text:
-                st.markdown(f"**Keyword found in TrOCR output:** {keyword}")
-                highlighted_text = trocr_extracted_text.replace(keyword, f"**{keyword}**")
-                st.write(highlighted_text)
-            else:
-                st.write(f"Keyword '{keyword}' not found in TrOCR output")
-
 if __name__ == "__main__":
     main()
-
+```
 
