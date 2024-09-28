@@ -9,10 +9,10 @@ pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 
 def preprocess_image(image):
     # Convert image to grayscale
-    image = image.convert('L')
+    #image = image.convert('L')
     # Enhance the image
-    enhancer = ImageEnhance.Contrast(image)
-    image = enhancer.enhance(2)
+    #enhancer = ImageEnhance.Contrast(image)
+    #image = enhancer.enhance(2)
     # Apply a filter to remove noise
     image = image.filter(ImageFilter.MedianFilter())
     return image
