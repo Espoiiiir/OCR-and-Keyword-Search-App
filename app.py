@@ -8,6 +8,14 @@ import logging
 logging.basicConfig(level=logging.INFO)
 # Set the Tesseract command path based on the environment
 pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'  # Update this path as needed
+def check_tesseract_version():
+    try:
+        version = pytesseract.get_tesseract_version()
+        logging.info(f"Tesseract version: {version}")
+        st.write(f"Tesseract version: {version}")
+    except Exception as e:
+        logging.error(f"Error checking Tesseract version: {e}")
+        st.error(f"Error checking Tesseract version: {e}")
 
 def preprocess_image(image):
     # Convert image to grayscale
