@@ -1,6 +1,4 @@
-Here is the adjusted code with undefined variables removed:
 
-```python
 import os
 from PIL import Image, ImageEnhance, ImageFilter
 import pytesseract
@@ -54,5 +52,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+
 
