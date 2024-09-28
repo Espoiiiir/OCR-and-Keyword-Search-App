@@ -7,20 +7,20 @@ import streamlit as st
 # Set the Tesseract command path based on the environment
 pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 
-#def preprocess_image(image):
+def preprocess_image(image):
     # Convert image to grayscale
-    #image = image.convert('L')
+    image = image.convert('L')
     # Enhance the image
-    #enhancer = ImageEnhance.Contrast(image)
-    #image = enhancer.enhance(2)
+    enhancer = ImageEnhance.Contrast(image)
+    image = enhancer.enhance(2)
     # Apply a filter to remove noise
-    #image = image.filter(ImageFilter.MedianFilter())
-    #return image
+    image = image.filter(ImageFilter.MedianFilter())
+    return image
 
 def perform_ocr(image):
     try:
         # Preprocess the image
-        #image = preprocess_image(image)
+        image = preprocess_image(image)
         # Perform OCR using Tesseract
         extracted_text = pytesseract.image_to_string(image, lang='eng+hin')
         return extracted_text
