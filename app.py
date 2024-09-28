@@ -4,7 +4,7 @@ import pytesseract
 import streamlit as st
 
 # Set the Tesseract command path based on the environment
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR'
+pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 
 def preprocess_image(image):
     # Convert image to grayscale
