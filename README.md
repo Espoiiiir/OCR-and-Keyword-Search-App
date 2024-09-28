@@ -42,6 +42,7 @@ This is a Streamlit application that performs Optical Character Recognition (OCR
 
 - Ensure the `hin.traineddata` and `eng.traineddata` files are correctly placed in the `tessdata` directory of your Tesseract installation.
 - Use the `--oem 1` option to disable the Cube model and use the LSTM OCR Engine Mode.
+- downgrade tesseract of the cloud to 3.5.1 for more accurate results.
 
 ## License
 
