@@ -1,4 +1,4 @@
 Pillow
-ocr
+tesseract-ocr
 streamlit
 
