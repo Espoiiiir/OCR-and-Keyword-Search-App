@@ -2,7 +2,10 @@ import os
 from PIL import Image, ImageEnhance, ImageFilter
 import pytesseract
 import streamlit as st
+import logging
 
+# Set up logging
+logging.basicConfig(level=logging.INFO)
 # Set the Tesseract command path based on the environment
 pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'  # Update this path as needed
 
