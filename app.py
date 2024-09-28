@@ -35,7 +35,7 @@ def main():
     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert("RGB")
         extracted_text = perform_ocr(image).strip()
-        trocr_extracted_text = perform_trocr_ocr(image).strip()
+      
 
         st.write("Extracted Text (Tesseract):")
         st.write(extracted_text)
