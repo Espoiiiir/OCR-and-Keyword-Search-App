@@ -6,9 +6,7 @@ from transformers import TrOCRProcessor, VisionEncoderDecoderModel, AutoProcesso
 import torch
 # Set the Tesseract command path based on the environment
 pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
-# Load the Huggingface model and processor
-processor = AutoProcessor.from_pretrained("microsoft/trocr-base-handwritten", trust_remote_code=True)
-model = AutoModelForVision2Seq.from_pretrained("microsoft/trocr-base-handwritten", trust_remote_code=True)
+
 @st.cache_data
 def preprocess_image(image):
     # Convert image to grayscale
@@ -19,6 +17,7 @@ def preprocess_image(image):
     # Apply a filter to remove noise
     image = image.filter(ImageFilter.MedianFilter())
     return image
+
 @st.cache_data
 def perform_ocr(image):
     try:
@@ -30,6 +29,14 @@ def perform_ocr(image):
     except pytesseract.TesseractError as e:
         st.error(f"Tesseract OCR error: {e}")
         return ""
+@st.cache_resource
+def load_model():
+    # Load the Huggingface model and processor
+    processor = AutoProcessor.from_pretrained("microsoft/trocr-base-handwritten", trust_remote_code=True)
+    model = AutoModelForVision2Seq.from_pretrained("microsoft/trocr-base-handwritten", trust_remote_code=True)
+    return processor, model
+
+processor, model = load_model()
 @st.cache_data
 def perform_trocr_ocr(image):
     try:
